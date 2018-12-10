@@ -1,2 +1,1 @@
 # schoolmaya
-test
