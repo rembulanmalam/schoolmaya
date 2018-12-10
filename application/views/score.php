@@ -7,6 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <?php echo $score[0]; ?>
+<table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Chapter</th>
+      <th scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($scores as $score): ?>
+        <tr>
+        <th scope="row"><?php echo $score['ChapterID']; ?></th>
+        <td><?php echo $score['Score'] ;?></td>
+        </tr>
+    <?php endforeach;?>
+  </tbody>
+</table>
 </body>
 </html>
