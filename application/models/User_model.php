@@ -10,7 +10,7 @@ class User_model extends CI_Model
         $this->db->where($array);
         $query = $this->db->get();
         
-        if(null !== $query->result_array())
+        if($query->num_rows() > 0)
             //kalo ketemu, return hasilnya
             return $query->result_array();
         
@@ -21,7 +21,7 @@ class User_model extends CI_Model
             $this->db->from("MsTeacher");
             $this->db->where($array);
             $query = $this->db->get();
-            if(null!==$query->result_array())
+            if($query->num_rows() > 0)
                 //kalo ketemu, return hasilnya
                 return $query->result_array();  
         }

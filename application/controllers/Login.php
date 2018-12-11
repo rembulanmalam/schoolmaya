@@ -2,10 +2,13 @@
 
 class Login extends CI_Controller 
 {
+    protected $username;
+    protected $password;
+    protected $login;
+
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model');
     }
 
     public function index()
@@ -13,22 +16,23 @@ class Login extends CI_Controller
         $this->load->view('login');
     }
 
-    public function login_process()
+    public function process()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        $login = $this->user_model->check_user($username, $password);
+        $this->username = $this->input->post('username');
+        $this->password = $this->input->post('password');
+        $this->load->model('user_model');
+        $this->login = $this->user_model->check_user($this->username, $this->password);
 
-        if(!empty(login))
+        if(isset($this->login))
         {
             //login sukses
-            $this->session->set_userdata($login);
-            redirect(base_url());
+            $this->session->set_userdata($this->login);
+            redirect(base_url('index.php/welcome/'));
         }
         else
         {
             //login gagal
-            $this->session->set_flasdata('Login Failed','Wrong Username or Password!');
+            $this->session->set_flashdata('Login Failed','Wrong Username or Password!');
             redirect(base_url());
         }
     }

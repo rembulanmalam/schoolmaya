@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Hello</h1>
+	<?= base_url("/login/login_process"); ?>
 </body>
 </html>
