@@ -22,12 +22,13 @@ class Login extends CI_Controller
         $this->password = $this->input->post('password');
         $this->load->model('user_model');
         $this->login = $this->user_model->check_user($this->username, $this->password);
-
+        $this->session->set_userdata($this->login);
+        
         if(isset($this->login))
         {
             //login sukses
             $this->session->set_userdata($this->login);
-            redirect(base_url('index.php/welcome/'));
+            redirect(base_url('index.php/home/'));
         }
         else
         {

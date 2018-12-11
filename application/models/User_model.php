@@ -12,7 +12,7 @@ class User_model extends CI_Model
         
         if($query->num_rows() > 0)
             //kalo ketemu, return hasilnya
-            return $query->result_array();
+            return $query->row_array();
         
         else
         {
@@ -23,7 +23,7 @@ class User_model extends CI_Model
             $query = $this->db->get();
             if($query->num_rows() > 0)
                 //kalo ketemu, return hasilnya
-                return $query->result_array();  
+                return $query->row_array();  
         }
     }
 }
