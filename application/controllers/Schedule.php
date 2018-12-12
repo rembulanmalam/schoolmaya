@@ -9,26 +9,27 @@ class Schedule extends CI_Controller
 
     public function index()
     {
+        //ambil data dari session yang aktif
         $user_account = $this->session->userdata();
 
+        //cek apakah sessionnya kosong/engga
         if(empty($user_account))
         {
-            //kalo belum login
+            //kalo kosong -> belom login, redirect ke base_url() -> login url
             redirect(base_url());
         }
         else
         {
             //kalo udah login
-                        
-        }
+            $this->load->model('user_model');
+            
+            //ambil data dari database
+            $data['schedule'] = $this->user_model->student_schedule($user_account['ID']);
 
-        $this->load->model('user_model');
-        $data['schedule'] = $this->user_model->get_schedule($user_account['ID']);
-        // echo "<pre>";
-        // var_dump($data);
-        // echo "</pre>";
-        $page =  $user_account['user_type'] . "/schedule";
-        $this->load->view($page, $data);
+            //$page -> path view file
+            $page =  $user_account['user_type'] . "/schedule";
+
+            $this->load->view($page, $data);                        
+        } 
     }    
-
 }

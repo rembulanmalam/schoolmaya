@@ -4,6 +4,7 @@ class User_model extends CI_Model
 {
     protected $usertype;
 
+    //untuk cek apakah user yang login ada di database
     public function check_user($username, $password){
         //cek username & password yang cocok di tabel MsStudent
         $array = array('Password' => $password, 'Username' => $username);
@@ -38,7 +39,8 @@ class User_model extends CI_Model
         }
     }   
 
-    public function get_schedule($id){
+    //untuk ambil semua schedule dari siswa
+    public function student_schedule($id){
         $query = "  SELECT `S`.Name, `CD`.ClassID, `HS`.SubjectName, `SC`.Day, `SC`.Start, `SC`.Duration
                     FROM `msstudent` AS `S`, `classdetail` AS `CD`, `headersubject` AS `HS`, `schedule` AS `SC`
                     WHERE S.ID = CD.StudentID AND CD.ClassID = HS.ClassID AND HS.ScheduleID = SC.ScheduleID AND S.ID = 1
@@ -47,7 +49,8 @@ class User_model extends CI_Model
         return $result->result_array();      
     }
 
-    public function get_next_schedule($id){
+    //untuk ambil schedule besok dari siswa
+    public function student_next_schedule($id){
         $query = "  SELECT `S`.Name, `CD`.ClassID, `HS`.SubjectName, `SC`.Day, `SC`.Start, `SC`.Duration
                     FROM `msstudent` AS `S`, `classdetail` AS `CD`, `headersubject` AS `HS`, `schedule` AS `SC`
                     WHERE S.ID = CD.StudentID AND CD.ClassID = HS.ClassID AND HS.ScheduleID = SC.ScheduleID AND S.ID = 1 AND 
@@ -57,5 +60,14 @@ class User_model extends CI_Model
                     ORDER BY `SC`.ScheduleID ASC; ";
         $result = $this->db->query($query);
         return $result->result_array();      
+    }
+
+    //untuk ambil skor dari siswa
+    public function student_score($id)
+    {
+        $this->db->select('*');
+        $this->db->from('Score');
+        $this->db->where('StudentID', $id);
+        return $this->db->get()->result_array();
     }
 }

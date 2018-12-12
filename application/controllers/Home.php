@@ -21,8 +21,10 @@ class Home extends CI_Controller
 	 */
 	public function index()
 	{
+		//ambil data dari session yang aktif
 		$data['user_account'] = $this->session->userdata();
 
+		//cek apakah sessionnya kosong/engga
 		if(empty($data['user_account']))
         {
             //kalo belum login
@@ -30,13 +32,15 @@ class Home extends CI_Controller
         }
         else
         {
-            //kalo udah login
-            
-        }
-		$this->load->model('user_model');
-        $data['schedule'] = $this->user_model->get_next_schedule($data['user_account']['ID']);
-        
-		$page =  $data['user_account']['user_type'] . "/home";
-		$this->load->view($page, $data);
+			//kalo udah login
+			$this->load->model('user_model');
+
+			//ambil data dari database
+			$data['schedule'] = $this->user_model->student_next_schedule($data['user_account']['ID']);
+			
+			//$page -> path view file
+			$page =  $data['user_account']['user_type'] . "/home";
+			$this->load->view($page, $data);
+        }	
 	}
 }

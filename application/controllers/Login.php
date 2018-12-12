@@ -36,7 +36,7 @@ class Login extends CI_Controller
         else
         {
             //login gagal
-            $this->session->set_flashdata('Login Failed','Wrong Username or Password!');
+            $this->session->set_flashdata('Failed','Wrong Username or Password!');
             redirect(base_url());
         }
     }
