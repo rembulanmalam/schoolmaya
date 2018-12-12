@@ -14,9 +14,36 @@
 <body>
 	<div class="container">	
 		<h1>Hello</h1>
-		<h2>Welcome back! <?php echo $Name ?> </h2>
-		//<a class="btn btn-dark" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+		<h2>Welcome back! <?php echo $user_account['Name'] ?> </h2>
+		<a class="btn btn-dark" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
 		<a class="btn btn-dark" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule</a>
+		<div class="row"></div>
+			<div class="col-6">
+		
+			<h3>Tomorrow Schedule</h3>
+			<table class="table table-hover">
+				<thead class="thead-light">
+					<tr>
+					<th scope="col">Day</th>
+					<th scope="col">Subject</th>
+					<th scope="col">Time</th>
+					<th scope="col">Duration</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($schedule as $data): ?>
+						<tr>
+						<th scope="row"><?php echo $data['Day']; ?></th>
+						<td><?php echo $data['SubjectName'] ;?></td>
+						<td><?php echo $data['Start'] ;?></td>
+						<td><?php echo $data['Duration'] ;?></td>
+						</tr>
+					<?php endforeach;?>
+				</tbody>
+			</table>
+
+			</div>
+		</div>
 	</div>
 </body>
 </html>

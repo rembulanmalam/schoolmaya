@@ -15,6 +15,7 @@
     <div class="container">
         <h1>Your Schedule</h1>
         <a class="btn btn-dark" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+        <a class="btn btn-dark" href="<?php echo (base_url('index.php/home/')) ?>">Home</a>
         <table class="table table-hover">
             <thead class="thead-light">
                 <tr>

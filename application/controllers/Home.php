@@ -21,9 +21,9 @@ class Home extends CI_Controller
 	 */
 	public function index()
 	{
-		$data = $this->session->userdata();
+		$data['user_account'] = $this->session->userdata();
 
-		if(empty($data))
+		if(empty($data['user_account']))
         {
             //kalo belum login
             redirect(base_url());
@@ -33,8 +33,10 @@ class Home extends CI_Controller
             //kalo udah login
             
         }
-
-		$page =  $data['user_type'] . "/home";
+		$this->load->model('user_model');
+        $data['schedule'] = $this->user_model->get_next_schedule($data['user_account']['ID']);
+        
+		$page =  $data['user_account']['user_type'] . "/home";
 		$this->load->view($page, $data);
 	}
 }

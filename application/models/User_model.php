@@ -46,4 +46,16 @@ class User_model extends CI_Model
         $result = $this->db->query($query);
         return $result->result_array();      
     }
+
+    public function get_next_schedule($id){
+        $query = "  SELECT `S`.Name, `CD`.ClassID, `HS`.SubjectName, `SC`.Day, `SC`.Start, `SC`.Duration
+                    FROM `msstudent` AS `S`, `classdetail` AS `CD`, `headersubject` AS `HS`, `schedule` AS `SC`
+                    WHERE S.ID = CD.StudentID AND CD.ClassID = HS.ClassID AND HS.ScheduleID = SC.ScheduleID AND S.ID = 1 AND 
+                        SC.Day = (
+                            SELECT DAYNAME(CURDATE()+1)
+                        )
+                    ORDER BY `SC`.ScheduleID ASC; ";
+        $result = $this->db->query($query);
+        return $result->result_array();      
+    }
 }
