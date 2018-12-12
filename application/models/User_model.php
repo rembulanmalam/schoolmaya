@@ -2,6 +2,8 @@
 
 class User_model extends CI_Model 
 {
+    protected $usertype;
+
     public function check_user($username, $password){
         //cek username & password yang cocok di tabel MsStudent
         $array = array('Password' => $password, 'Username' => $username);
@@ -11,8 +13,12 @@ class User_model extends CI_Model
         $query = $this->db->get();
         
         if($query->num_rows() > 0)
+        {
             //kalo ketemu, return hasilnya
+            $this->usertype = array("user_type" => "student");
+            $this->session->set_userdata($this->usertype);
             return $query->row_array();
+        }
         
         else
         {
@@ -22,8 +28,13 @@ class User_model extends CI_Model
             $this->db->where($array);
             $query = $this->db->get();
             if($query->num_rows() > 0)
+            {
                 //kalo ketemu, return hasilnya
+                //buat session teacher -> identifikasi yg login adalah teacher
+                $this->usertype = array("user_type" => "teacher");
+                $this->session->set_userdata($this->usertype);
                 return $query->row_array();  
+            }
         }
     }
 }
