@@ -15,7 +15,8 @@
 	<div class="container">	
 		<h1>Hello</h1>
 		<h2>Welcome back! <?php echo $Name ?> </h2>
-		<a class="btn btn-dark" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+		//<a class="btn btn-dark" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+		<a class="btn btn-dark" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule</a>
 	</div>
 </body>
 </html>

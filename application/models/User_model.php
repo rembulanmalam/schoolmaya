@@ -36,5 +36,14 @@ class User_model extends CI_Model
                 return $query->row_array();  
             }
         }
+    }   
+
+    public function get_schedule($id){
+        $query = "  SELECT `S`.Name, `CD`.ClassID, `HS`.SubjectName, `SC`.Day, `SC`.Start, `SC`.Duration
+                    FROM `msstudent` AS `S`, `classdetail` AS `CD`, `headersubject` AS `HS`, `schedule` AS `SC`
+                    WHERE S.ID = CD.StudentID AND CD.ClassID = HS.ClassID AND HS.ScheduleID = SC.ScheduleID AND S.ID = 1
+                    ORDER BY `SC`.ScheduleID ASC; ";
+        $result = $this->db->query($query);
+        return $result->result_array();      
     }
 }

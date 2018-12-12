@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends CI_Controller 
+{
 
 	/**
 	 * Index Page for this controller.
@@ -21,6 +22,18 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data = $this->session->userdata();
+
+		if(empty($data))
+        {
+            //kalo belum login
+            redirect(base_url());
+        }
+        else
+        {
+            //kalo udah login
+            
+        }
+
 		$page =  $data['user_type'] . "/home";
 		$this->load->view($page, $data);
 	}

@@ -9,9 +9,32 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-	<title>Schoolmaya | Home</title>
+	<title>Schoolmaya | Schedule</title>
 </head>
 <body>
-	<a class="btn btn-dark" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+    <div class="container">
+        <h1>Your Schedule</h1>
+        <a class="btn btn-dark" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Time</th>
+                <th scope="col">Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($schedule as $data): ?>
+                    <tr>
+                    <th scope="row"><?php echo $data['Day']; ?></th>
+                    <td><?php echo $data['SubjectName'] ;?></td>
+                    <td><?php echo $data['Start'] ;?></td>
+                    <td><?php echo $data['Duration'] ;?></td>
+                    </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
