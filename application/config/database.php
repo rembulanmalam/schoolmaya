@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'localhost:9080',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'schoolmaya',
