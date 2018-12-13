@@ -1,0 +1,14 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+
+$enable-rounded:              true !default;
+$btn-border-radius:           20px !default;
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+@import "bootstrap/scss/bootstrap";

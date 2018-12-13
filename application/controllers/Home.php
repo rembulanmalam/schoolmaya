@@ -31,15 +31,27 @@ class Home extends CI_Controller
             redirect(base_url());
         }
         else
-        {
-			//kalo udah login
-			$this->load->model('user_model');
+        {	
+			//kalo yang login student
+			if($data['user_account']['user_type'] == "student")
+			{
+				$this->load->model('student_model');
 
-			//ambil data dari database
-			$data['schedule'] = $this->user_model->student_next_schedule($data['user_account']['ID']);
-			
+				//ambil data dari database
+				$data['schedule'] = $this->student_model->student_next_schedule($data['user_account']['ID']);				
+			}
+			//kalo yang login guru
+			else
+			{
+				$this->load->model('teacher_model');
+
+				//ambil data dari database
+				$data['schedule'] = $this->teacher_model->teacher_next_schedule($data['user_account']['ID']);
+			}
+
 			//$page -> path view file
 			$page =  $data['user_account']['user_type'] . "/home";
+			
 			$this->load->view($page, $data);
         }	
 	}

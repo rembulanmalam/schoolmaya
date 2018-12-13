@@ -20,16 +20,27 @@ class Schedule extends CI_Controller
         }
         else
         {
-            //kalo udah login
-            $this->load->model('user_model');
-            
-            //ambil data dari database
-            $data['schedule'] = $this->user_model->student_schedule($user_account['ID']);
+            //kalo yang login student
+            if($user_account['user_type'] == "student")
+			{
+                $this->load->model('student_model');
+                
+                //ambil data dari database
+                $data['schedule'] = $this->student_model->student_schedule($user_account['ID']);   
+            } 
+            //kalo yang login guru
+			else
+			{
+				$this->load->model('teacher_model');
+
+				//ambil data dari database
+				$data['schedule'] = $this->teacher_model->teacher_schedule($user_account['ID']);
+            }   
 
             //$page -> path view file
-            $page =  $user_account['user_type'] . "/schedule";
-
-            $this->load->view($page, $data);                        
+			$page =  $user_account['user_type'] . "/schedule";
+			
+			$this->load->view($page, $data);           
         } 
     }    
 }

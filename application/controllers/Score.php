@@ -20,16 +20,21 @@ class Score extends CI_Controller
         }
         else
         {
-            //kalo udah login
-            $this->load->model('user_model');
-            
-            //ambil data dari database
-            $data['scores'] = $this->user_model->student_score($user_account['ID']);
+            //kalo yang login student
+            if($user_account['user_type'] == "student")
+			{
+                //kalo udah login
+                $this->load->model('user_model');
+                
+                //ambil data dari database
+                $data['scores'] = $this->student_model->student_score($user_account['ID']);
 
-            //$page -> path view file
-            $page =  $user_account['user_type'] . "/score";
+                //$page -> path view file
+                $page =  $user_account['user_type'] . "/score";
 
-            $this->load->view($page, $data);                        
+                $this->load->view($page, $data);   
+            }
+                             
         } 
     }   
 }
