@@ -31,4 +31,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 
 ##bootstrap sass
-/front/bootstrap/*
+front/bootstrap/*
+!front/bootstrap/scss/bootstrap.scss
