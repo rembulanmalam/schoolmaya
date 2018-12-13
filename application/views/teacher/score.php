@@ -50,33 +50,23 @@
 				</ul>
 			</div>
 		</div>
-	</nav>
-
-	<title>Schoolmaya | Schedule</title>
+    </nav>
+    <title>Schoolmaya | Score</title>
 </head>
+
+<!-- body nya belom kelar, ngantuk bat, ntar gue lanjutin lagi -->
 <body>
-    <div class="container">
-        <h1>Your Schedule</h1>
-        <table class="table table-hover">
-            <thead class="thead-light">
-                <tr>
-                <th scope="col">Class</th>
-                <th scope="col">Day</th>
-                <th scope="col">Subject</th>
-                <th scope="col">Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($schedule as $data): ?>
-                    <tr>
-                    <td><?php echo $data['ClassID'] ;?></td>
-                    <th scope="row"><?php echo $data['Day']; ?></th>
-                    <td><?php echo $data['SubjectName'] ;?></td>
-                    <td><?php echo $data['Start'] ;?></td>
-                    </tr>
-                <?php endforeach;?>
-            </tbody>
-        </table>
-    </div>
+	<div class="container mt-5">
+		<form class="form-inline" action = "show_chapter/" method = "POST">
+			<select class="form-control col-11" id="sel1" name="select_class">
+				<option value="" disabled selected hidden>--Select Class--</option>
+				<?php foreach ($class_list as $data): ?>
+					<option value="<?php echo $data['ClassID'] ?>"><?php echo $data['ClassID'] ?></option>
+				<?php endforeach;?>
+			</select>
+			<button type="submit" class="btn ml-2">Submit</button>
+		</form>
+	</div>
+    
 </body>
 </html>
