@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Score extends CI_Controller
 {
+    protected $data;
     public function __construct(){
         parent::__construct();
     }
@@ -24,16 +25,26 @@ class Score extends CI_Controller
             if($user_account['user_type'] == "student")
 			{
                 //kalo udah login
-                $this->load->model('user_model');
+                $this->load->model('student_model');
                 
                 //ambil data dari database
-                $data['scores'] = $this->student_model->student_score($user_account['ID']);
+                $this->data['scores'] = $this->student_model->student_score($user_account['ID']);
 
-                //$page -> path view file
-                $page =  $user_account['user_type'] . "/score";
-
-                $this->load->view($page, $data);   
+                
             }
+            //kalo yang login guru
+            else
+            {
+                //input nilai siswa
+                // $this->load->library("form_validation");
+                // $this->form_validation->set_rules('student_score', 'Student_score', 'required');
+                // $score = $this->input->post('score');
+            }
+
+            //$page -> path view file
+            $page =  $user_account['user_type'] . "/score";
+
+            $this->load->view($page, $this->data);  
                              
         } 
     }   

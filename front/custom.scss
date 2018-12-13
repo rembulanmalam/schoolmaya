@@ -1,14 +1,21 @@
 // Custom.scss
 // Option A: Include all of Bootstrap
 
+$enable-rounded:            true;
 
-$enable-rounded:              true !default;
-$btn-border-radius:           20px !default;
 
 .vertical-align {
     display: flex;
     align-items: center;
     height: 100vh;
 }
+
+div.dropdown-menu.long-drop-down{
+   
+    $enable-rounded:            false !default;
+    min-width: 100%;
+}
+
+select:invalid { color: gray; }
 
 @import "bootstrap/scss/bootstrap";

@@ -25,7 +25,7 @@
 					<a class="nav-link" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
+					<a class="nav-link" href="<?php echo (base_url('index.php/classes/')) ?>">class</a>
 				</li>
 				<li class="nav-item">
 					<a class="btn btn-outline-danger" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>

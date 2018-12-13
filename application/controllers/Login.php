@@ -30,7 +30,7 @@ class Login extends CI_Controller
         if(isset($this->login))
         {
             //login sukses
-           $this->sessions = $this->session->set_userdata($this->login);
+            $this->sessions = $this->session->set_userdata($this->login);
             redirect(base_url('index.php/home/'));
         }
         else
