@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://localhost:9080/schoolmaya/front/custom.css">	
+    <link rel="stylesheet" href="http://localhost/schoolmaya/front/custom.css">	
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
 
  	<!-- Navbar -->	
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
 			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>">Schoolmaya</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,31 +45,51 @@
 			</div>
 		</div>
 	</nav>
-
-    <title>Schoolmaya | View Score</title>
+    
+    <title>Schoolmaya | Profile</title>
 </head>
 <body>
-  <div class="container mt-5">
-    <h1>Your Score</h1>
-  </div>
+    <h1>Your Profile</h1>
+    <br>
+    <form>
+        <div class="form-group">
+            <label>New Password</label>
+            <input type="password" name="NPassword" placeholder="New Password" id="txtNewPassword" class="form-control">
+        </div>
+        <div id="divCheckPassword" role="alert"></div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" name="RNPassword" placeholder="Retype New Password" id="txtConfirmPassword" onChange="isPasswordMatch();" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
-  <div class="container mt-5">
-    <table class="table table-hover">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">Chapter</th>
-          <th scope="col">Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($scores as $score): ?>
-            <tr>
-            <th scope="row"><?php echo $score['ChapterID']; ?></th>
-            <td><?php echo $score['Score'] ;?></td>
-            </tr>
-        <?php endforeach;?>
-      </tbody>
-    </table>
-  </div>
+    
+<script>
+
+function isPasswordMatch() {
+    var password = $("#txtNewPassword").val();
+    var confirmPassword = $("#txtConfirmPassword").val();
+
+    if (password != confirmPassword) {
+        $("#divCheckPassword").removeClass("alert-success alert-warning");
+        $("#divCheckPassword").addClass("alert alert-warning");
+        $("#divCheckPassword").html("Passwords do not match!");
+
+    }
+    else {
+        $("#divCheckPassword").removeClass("alert-success alert-warning");
+        $("#divCheckPassword").addClass("alert alert-success");
+        $("#divCheckPassword").html("Passwords match.");
+    }
+}
+
+$(document).ready(function () {
+    $("#txtConfirmPassword, #txtNewPassword").keyup(isPasswordMatch);
+});
+
+
+
+</script>
 </body>
 </html>

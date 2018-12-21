@@ -10,7 +10,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+	<!-- Navbar -->	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
 			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>">Schoolmaya</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,18 +19,25 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo (base_url('index.php/home/')) ?>">Home</a>
-				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="<?php echo (base_url('index.php/home/')) ?>">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
 				</li>
-				<li class="nav-item">
-					<a class="btn btn-outline-danger" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
-				</li>
+					<div class="dropdown">
+						<a class="btn btn-outline-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Profile
+						</a>
+
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" href="<?php echo (base_url('index.php/profile/')) ?>">Edit Profile</a>
+							<a class="dropdown-item" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+						</div>
+					</div>
 				</ul>
 			</div>
 		</div>
