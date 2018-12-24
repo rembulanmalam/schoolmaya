@@ -14,20 +14,29 @@
 
 	<style>
 
-      body{
-        font-family: 'Open Sans';
-      }
+		body{
+			font-family: 'Open Sans';
+			font-size:14px;
+			background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
+			background-repeat: no-repeat;
+			background-size:10000px;
+		}
 
-	  h1{
-        font-family: 'Raleway';
-      }
+		h1{
+			font-family: 'Open Sans';
+		}
+
+		.img-fluid {
+			max-width: 100%;
+			height: auto;
+		}
 
 	</style>
 
 	<!-- Navbar -->	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>">Schoolmaya</a>
+			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>"><img src="http://i66.tinypic.com/33dz3tk.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -46,7 +55,7 @@
 					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
 				</li>
 				<li class="nav-item">
-					<a class="btn btn-outline-danger" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+					<a class="btn btn-outline-danger" href="<?php echo (base_url('index.php/login/logout/')) ?>" style="font-size:14px">Logout</a>
 				</li>
 				</ul>
 			</div>
@@ -57,33 +66,34 @@
 </head>
 <body>
 	<div class="container mt-5">	
-		<h1>Hello</h1>
-		<h3>Welcome back! <?php echo $user_account['Name'] ?> </h2>	
-		<div class="row mt-5 ml-0 pl-0"></div>
-			<div class="col-6">		
-				<h3>Tomorrow Schedule</h3>
-				<table class="table table-hover">
-					<thead class="thead-light">
-						<tr>
-						<th scope="col">Class</th>
-						<th scope="col">Day</th>
-						<th scope="col">Subject</th>
-						<th scope="col">Time</th>						
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach ($schedule as $data): ?>
+		<center>
+			<h3>Welcome back! <b><?php echo $user_account['Name'] ?></b> </h2>	
+			<div class="row mt-5 ml-0 pl-0"></div>
+				<div class="col-6">		
+					<h3>Tomorrow's Schedule</h3>
+					<table class="table table-hover table-light">
+						<thead class="thead-light">
 							<tr>
-							<td><?php echo $data['ClassID'] ;?></td>
-							<th scope="row"><?php echo $data['Day']; ?></th>
-							<td><?php echo $data['SubjectName'] ;?></td>
-							<td><?php echo $data['Start'] ;?></td>							
+							<th scope="col">Class</th>
+							<th scope="col">Day</th>
+							<th scope="col">Subject</th>
+							<th scope="col">Time</th>						
 							</tr>
-						<?php endforeach;?>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<?php foreach ($schedule as $data): ?>
+								<tr>
+								<td><?php echo $data['ClassID'] ;?></td>
+								<th scope="row"><?php echo $data['Day']; ?></th>
+								<td><?php echo $data['SubjectName'] ;?></td>
+								<td><?php echo $data['Start'] ;?></td>							
+								</tr>
+							<?php endforeach;?>
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</div>
+		</center>
 	</div>
 </body>
 </html>

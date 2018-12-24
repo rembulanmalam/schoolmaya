@@ -11,6 +11,27 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
 	<link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
 
+    <style>
+
+	body{
+		font-family: 'Open Sans';
+		font-size:14px;
+		background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
+		background-repeat: no-repeat;
+		background-size:10000px;
+	}
+
+	h1{
+		font-family: 'Open Sans';
+	}
+
+	.img-fluid {
+		max-width: 100%;
+		height: auto;
+	}
+
+	</style>
+
 	<!-- Navbar -->	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
@@ -30,7 +51,7 @@
 					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
 				</li>
 					<div class="dropdown">
-						<a class="btn btn-outline-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="btn btn-outline-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px">
 							Profile
 						</a>
 
@@ -48,27 +69,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>Your Schedule</h1>
-        <table class="table table-hover">
-            <thead class="thead-light">
-                <tr>
-                <th scope="col">Day</th>
-                <th scope="col">Subject</th>
-                <th scope="col">Time</th>
-                <th scope="col">Duration</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($schedule as $data): ?>
-                    <tr>
-                    <th scope="row"><?php echo $data['Day']; ?></th>
-                    <td><?php echo $data['SubjectName'] ;?></td>
-                    <td><?php echo $data['Start'] ;?></td>
-                    <td><?php echo $data['Duration'] ;?></td>
-                    </tr>
-                <?php endforeach;?>
-            </tbody>
-        </table>
+		<div class="force-overflow">
+			<br><br><center><h1><b>Your Schedule</b></h1><center><br><br>
+			<table class="table table-hover table-light">
+				<thead class="thead-light">
+					<tr>
+					<th scope="col">Day</th>
+					<th scope="col">Subject</th>
+					<th scope="col">Time</th>
+					<th scope="col">Duration</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($schedule as $data): ?>
+						<tr>
+						<th scope="row"><?php echo $data['Day']; ?></th>
+						<td><?php echo $data['SubjectName'] ;?></td>
+						<td><?php echo $data['Start'] ;?></td>
+						<td><?php echo $data['Duration'] ;?> hour(s)</td>
+						</tr>
+					<?php endforeach;?>
+				</tbody>
+			</table>
+		</div>
     </div>
 </body>
 </html>

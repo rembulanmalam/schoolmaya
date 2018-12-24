@@ -12,22 +12,32 @@
 	<link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
 
 
+
 	<style>
 
-      body{
-        font-family: 'Open Sans';
-      }
+		body{
+			font-family: 'Open Sans';
+			font-size:14px;
+			background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
+			background-repeat: no-repeat;
+			background-size:10000px;
+		}
 
-	  h1{
-        font-family: 'Raleway';
-      }
+		h1{
+			font-family: 'Open Sans';
+		}
+
+		.img-fluid {
+			max-width: 100%;
+			height: auto;
+		}
 
 	</style>
 
 	<!-- Navbar -->	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>">Schoolmaya</a>
+			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>"><img src="http://i66.tinypic.com/33dz3tk.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -46,7 +56,7 @@
 					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
 				</li>
 				<li class="nav-item">
-					<a class="btn btn-outline-danger" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+					<a class="btn btn-outline-danger" href="<?php echo (base_url('index.php/login/logout/')) ?>" style="font-size:14px">Logout</a>
 				</li>
 				</ul>
 			</div>
@@ -57,8 +67,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Your Schedule</h1>
-        <table class="table table-hover">
+		<br><br>
+		<center><h1><b>Your Schedule</b></h1></center>
+		<br><br>
+        <table class="table table-hover table-light">
             <thead class="thead-light">
                 <tr>
                 <th scope="col">Class</th>

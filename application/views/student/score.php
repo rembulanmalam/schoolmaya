@@ -14,6 +14,27 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
     <link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
 
+    <style>
+
+    body{
+        font-family: 'Open Sans';
+        font-size:14px;
+        background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
+		    background-repeat: no-repeat;
+		    background-size:10000px;
+    }
+
+    h1{
+        font-family: 'Open Sans';
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+
+    </style>
+
  	<!-- Navbar -->	
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
@@ -33,7 +54,7 @@
 					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
 				</li>
 					<div class="dropdown">
-						<a class="btn btn-outline-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="btn btn-outline-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px">
 							Profile
 						</a>
 
@@ -51,11 +72,11 @@
 </head>
 <body>
   <div class="container mt-5">
-    <h1>Your Score</h1>
+    <center><h1><b>Your Score</b></h1></center>
   </div>
 
   <div class="container mt-5">
-    <table class="table table-hover">
+    <table class="table table-hover table-light">
       <thead class="thead-light">
         <tr>
           <th scope="col">Chapter</th>
