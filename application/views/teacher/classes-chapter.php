@@ -66,6 +66,39 @@
     <title>SekolahQu | Your Class</title>
 </head>
 <body>
+	<!--POP UP untuk input nilai per chapter-->
+	<!--tolong bikinin public funtion buat masukin nilai yang diinput ke database-->
+	<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLongTitle"><b>Input Students' Score</b></h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<!--tolong masukin syntax php biar looping data siswa-->
+			<form class="form-inline">
+				<div class="form-group mb-2">
+					<label for="studentName" class="sr-only">Name</label>
+					<input type="text" readonly class="form-control-plaintext" id="studentName" value="Name">
+				</div>
+				<div class="form-group mx-sm-3 mb-2">
+					<label for="inputScore" class="sr-only">Score</label>
+					<input type="text" class="form-control" id="inputScore" placeholder="Score">
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<!--tolong masukin syntax php biar ke save di database-->
+			<button type="button" class="btn btn-primary">Save changes</button>
+		</div>
+		</div>
+	</div>
+	</div>
+
 	<!-- LANJUTAN DARI FILE 'classes.php'SETELAH USER MEMLIH KELAS -->
 	<!-- Menampilkan list kelas dimana sang guru mengajar -->
 	<div class="container mt-5">
@@ -88,7 +121,9 @@
 	<div class="container mt-3">
 		<div class="list-group">
 			<?php foreach ($subject as $subjects): ?>
-				<a href="<?php echo $subjects['ChapterID'] ?>" class="list-group-item list-group-item-action"><?php echo $subjects['ChapterID'] ?> - <?php echo $subjects['ChapterName'] ?></a>
+				<a href="<?php echo $subjects['ChapterID'] ?>" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#exampleModalLong">
+				<?php echo $subjects['ChapterID'] ?> - <?php echo $subjects['ChapterName'] ?>
+				</a>
 			<?php endforeach;?>
 		</div>
 	</div>    
