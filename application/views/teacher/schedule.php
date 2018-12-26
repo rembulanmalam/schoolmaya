@@ -19,8 +19,8 @@
 			font-family: 'Open Sans';
 			font-size:14px;
 			background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
-			background-repeat: no-repeat;
-			background-size:10000px;
+			background-size:cover;
+			background-position:fixed;
 		}
 
 		h1{

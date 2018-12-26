@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="http://localhost:9080/schoolmaya/front/custom.css">		
+	<link rel="stylesheet" href="<?php echo base_url('front/custom.css') ?>">		
 	
   	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -20,7 +20,8 @@
 		font-size:14px;
 		background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
 		background-repeat: no-repeat;
-		background-size:10000px;
+		background-size:cover;
+		background-position:fixed;
       }
 
 	  h1{
