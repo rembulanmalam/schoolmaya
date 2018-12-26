@@ -4,22 +4,27 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="http://localhost/schoolmaya/front/custom.css">		
+	<link rel="stylesheet" href="http://localhost:9080/schoolmaya/front/custom.css">		
 	
   	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
+	<link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
 
 
 	<style>
 
       body{
         font-family: 'Open Sans';
+		font-size:14px;
+		background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
+		background-repeat: no-repeat;
+		background-size:10000px;
       }
 
 	  h1{
-        font-family: 'Raleway';
+        font-family: 'Open Sans';
       }
 
 	  .img-fluid {
@@ -32,7 +37,7 @@
 	<!-- Navbar -->	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>">Schoolmaya</a>
+			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>"><img src="http://i66.tinypic.com/33dz3tk.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -48,7 +53,7 @@
 					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
 				</li>
 					<div class="dropdown">
-						<a class="btn btn-outline-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="btn btn-outline-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px">
 							Profile
 						</a>
 
@@ -62,44 +67,54 @@
 		</div>
 	</nav>
 
-	<title>Schoolmaya | Home</title>
+	<title>SekolahQu | Home</title>
 </head>
 <body>
 	<div class="container mt-5">
-	  	<div class="row">
-	  		<div class="col-2">
-				<img src="<?php echo (base_url('asset/img/default.png')) ?>" class="rounded-circle img-fluid">
+	  	<center>
+			<div class="row">
+			<div class="col"></div>
+				<div class="col-6">
+					<center>
+						<img src="<?php echo (base_url('asset/img/default.png')) ?>" class="rounded-circle img-fluid" style="width:180px">
+						<br><br>
+						<h3>
+							Hello! 
+							<b><?php echo $user_account['Name'] ?></b> 
+							<br>
+							[Class] <!--tolong inputin syntax php biar bisa display kelas--> 
+						</h3>
+					</center>
+				</div>
+				<div class="col"></div>
+				
 			</div>
-			<div class="col-10">
-				<h1>Hello</h1>
-				<h3>Welcome back! <?php echo $user_account['Name'] ?> </h2>
-			</div>
-		</div>
-		<div class="row mt-5 ml-0 pl-0"></div>
-			<div class="col-6">		
-				<h3>Tomorrow Schedule</h3>
-				<table class="table table-hover">
-					<thead class="thead-light">
-						<tr>
-						<th scope="col">Day</th>
-						<th scope="col">Subject</th>
-						<th scope="col">Time</th>
-						<th scope="col">Duration</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach ($schedule as $data): ?>
+			<div class="row mt-5 ml-0 pl-0"></div>
+				<div class="col-6">		
+					<h3>Tomorrow's Schedule</h3>
+					<table class="table table-hover table-light">
+						<thead class="thead-light">
 							<tr>
-							<th scope="row"><?php echo $data['Day']; ?></th>
-							<td><?php echo $data['SubjectName'] ;?></td>
-							<td><?php echo $data['Start'] ;?></td>
-							<td><?php echo $data['Duration'] ;?></td>
+							<th scope="col">Day</th>
+							<th scope="col">Subject</th>
+							<th scope="col">Time</th>
+							<th scope="col">Duration</th>
 							</tr>
-						<?php endforeach;?>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<?php foreach ($schedule as $data): ?>
+								<tr>
+								<th scope="row"><?php echo $data['Day']; ?></th>
+								<td><?php echo $data['SubjectName'] ;?></td>
+								<td><?php echo $data['Start'] ;?></td>
+								<td><?php echo $data['Duration'] ;?> hour(s)</td>
+								</tr>
+							<?php endforeach;?>
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</div>
+		</center>
 	</div>
 </body>
 </html>
