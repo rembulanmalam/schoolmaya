@@ -51,7 +51,7 @@ class Teacher_model extends CI_Model
     {
         $query = " 	SELECT DISTINCT `HS`.ClassID, `HS`.SubjectName, SC.ChapterID, SC.ChapterName, C.ClassName
                     FROM `msteacher` AS `T`, `headersubject` AS `HS`, `subjectchapter` AS `SC`, class AS C
-                    WHERE T.ID = HS.TeacherID AND HS.SubjectID = SC.SubjectID AND HS.ClassID = C.ClassID AND T.ID = 1
+                    WHERE T.ID = HS.TeacherID AND HS.SubjectID = SC.SubjectID AND HS.ClassID = C.ClassID AND T.ID = $id
                     ORDER BY HS.ClassID, HS.SubjectName, SC.ChapterID ASC; ";
         $result = $this->db->query($query);
         return $result->result_array();     
@@ -62,7 +62,7 @@ class Teacher_model extends CI_Model
     {
         $query = " 	SELECT *
                     FROM `msstudent` AS `S`, `classdetail` AS `CD`
-                    WHERE S.ID = CD.StudentID AND CD.ClassID = '10-2'
+                    WHERE S.ID = CD.StudentID AND CD.ClassID = $classid
                     ORDER BY S.Name ASC ";
         $result = $this->db->query($query);
         return $result->result_array();   

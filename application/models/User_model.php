@@ -6,6 +6,8 @@ class User_model extends CI_Model
 
     //untuk cek apakah user yang login ada di database
     public function check_user($username, $password){
+        //TODO encrypt password
+
         //cek username & password yang cocok di tabel MsStudent
         $array = array('Password' => $password, 'Username' => $username);
         $this->db->select("*");

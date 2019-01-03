@@ -18,6 +18,13 @@ class Profile extends CI_Controller
     
     public function update()
     {
+        //TODO check if password more than 8 char
+        //TODO push result notification
+
+        $new_password = $this->input->post('RNPassword');
+        $new_password = $this->encryption->encrypt($new_password);
+
         
+        var_dump($new_password);
     }
 }

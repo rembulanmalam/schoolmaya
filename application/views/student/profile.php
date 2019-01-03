@@ -37,7 +37,7 @@
     </style>
 
  	<!-- Navbar -->	
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <nav class="navbar navbar-light navbar-expand-md fixed-top bg-white">
 		<div class="container">
 			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>"><img src="http://i66.tinypic.com/33dz3tk.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,22 +72,23 @@
     <title>SekolahQu | Profile</title>
 </head>
 <body>
-    <br><br><center><h1><b>Your Profile</b></h1></center><br><br>
-    <div class="container" style="width:300px">
-        <form>
-            <div class="form-group">
-                <label>New Password</label>
-                <input type="password" name="NPassword" placeholder="New Password" id="txtNewPassword" class="form-control" style="font-size:14px">
-            </div>
-            <div id="divCheckPassword" role="alert"></div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="RNPassword" placeholder="Retype New Password" id="txtConfirmPassword" onChange="isPasswordMatch();" class="form-control" style="font-size:14px">
-            </div>
-            <center><button type="submit" class="btn btn-primary" style="font-size:14px">Submit</button></center>
-        </form>
+    <div class="container pt-5 mt-5">
+        <center><h1><b>Your Profile</b></h1></center>
+        <div class="container" style="width:400px">
+            <form action="update/" method = "POST">
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" name="NPassword" placeholder="New Password" id="txtNewPassword" class="form-control" style="font-size:14px">
+                </div>
+                <div id="divCheckPassword" role="alert"></div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="RNPassword" placeholder="Retype New Password" id="txtConfirmPassword" onChange="isPasswordMatch();" class="form-control" style="font-size:14px">
+                </div>
+                <center><button type="submit" class="btn btn-primary" style="font-size:14px">Submit</button></center>
+            </form>
+        </div>
     </div>
-
     
 <script>
 

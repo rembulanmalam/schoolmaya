@@ -13,11 +13,8 @@ class Login extends CI_Controller
     }
 
     public function index()
-    {
-        if(isset($this->sessions))
-            redirect('index.php/home');
-        else
-            $this->load->view('login');        
+    {   
+        $this->load->view('login');        
     }
 
     public function process()
@@ -30,8 +27,16 @@ class Login extends CI_Controller
         if(isset($this->login))
         {
             //login sukses
-            $this->sessions = $this->session->set_userdata($this->login);
-            redirect(base_url('index.php/home/'));
+            if($this->session->userdata($this->login))
+            {
+                redirect(base_url('index.php/home/'));
+            }
+
+            else 
+            {
+                $this->sessions = $this->session->set_userdata($this->login);
+                redirect(base_url('index.php/home/'));
+            }
         }
         else
         {

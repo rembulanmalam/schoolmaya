@@ -12,31 +12,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
 	<link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
 
-
-	<style>
-
-      body{
-        font-family: 'Open Sans';
-		font-size:14px;
-		background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
-		background-repeat: no-repeat;
-		background-size:cover;
-		background-position:fixed;
-      }
-
-	  h1{
-        font-family: 'Open Sans';
-      }
-
-	  .img-fluid {
-		max-width: 100%;
- 		height: auto;
-	  }
-
-	</style>
-
 	<!-- Navbar -->	
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-light navbar-expand-md fixed-top bg-white">
 		<div class="container">
 			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>"><img src="http://i66.tinypic.com/33dz3tk.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,23 +48,23 @@
 	<title>SekolahQu | Home</title>
 </head>
 <body>
-	<div class="container mt-5">
+	<div class="container mt-5 pt-5">
 	  	<center>
 			<div class="row">
 			<div class="col"></div>
-				<div class="col-6">
-					<center>
-						<img src="<?php echo (base_url('asset/img/default.png')) ?>" class="rounded-circle img-fluid" style="width:180px">
-						<br><br>
-						<h3>
-							Hello! 
-							<b><?php echo $user_account['Name'] ?></b> 
-							<br>
-							[Class] <!--tolong inputin syntax php biar bisa display kelas--> 
-						</h3>
-					</center>
-				</div>
-				<div class="col"></div>
+			<div class="col-6">
+				<center>
+					<img src="<?php echo (base_url('asset/img/default.png')) ?>" class="rounded-circle img-fluid" style="width:180px">
+					<br><br>
+					<h3>
+						Hello! 
+						<b><?php echo $user_account['Name'] ?></b> 
+						<br>
+						<?php echo $class[0]['ClassName'] ?>
+					</h3>
+				</center>
+			</div>
+			<div class="col"></div>
 				
 			</div>
 			<div class="row mt-5 ml-0 pl-0"></div>

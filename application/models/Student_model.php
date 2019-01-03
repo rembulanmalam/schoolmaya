@@ -2,6 +2,15 @@
 
 class Student_model extends CI_Model 
 {
+    //get student class
+    public function get_student_class($id){
+        $query = "  SELECT DISTINCT C.ClassID, ClassName
+                    FROM MsStudent AS S, ClassDetail AS CD, Class AS C 
+                    WHERE S.ID = CD.StudentID AND C.ClassID = CD.ClassID AND S.ID = $id; ";
+        $result = $this->db->query($query);
+        return $result->result_array(); 
+    }
+
     //ambil semua dari kolom MsStudent
     public function student_list()
     {
@@ -26,7 +35,7 @@ class Student_model extends CI_Model
     public function student_schedule($id){
         $query = "  SELECT `S`.Name, `CD`.ClassID, `HS`.SubjectName, `SC`.Day, `SC`.Start, `SC`.Duration
                     FROM `msstudent` AS `S`, `classdetail` AS `CD`, `headersubject` AS `HS`, `schedule` AS `SC`
-                    WHERE S.ID = CD.StudentID AND CD.ClassID = HS.ClassID AND HS.ScheduleID = SC.ScheduleID AND S.ID = 1
+                    WHERE S.ID = CD.StudentID AND CD.ClassID = HS.ClassID AND HS.ScheduleID = SC.ScheduleID AND S.ID = $id
                     ORDER BY `SC`.ScheduleID ASC; ";
         $result = $this->db->query($query);
         return $result->result_array();      
@@ -36,7 +45,7 @@ class Student_model extends CI_Model
     public function student_next_schedule($id){
         $query = "  SELECT `S`.Name, `CD`.ClassID, `HS`.SubjectName, `SC`.Day, `SC`.Start, `SC`.Duration
                     FROM `msstudent` AS `S`, `classdetail` AS `CD`, `headersubject` AS `HS`, `schedule` AS `SC`
-                    WHERE S.ID = CD.StudentID AND CD.ClassID = HS.ClassID AND HS.ScheduleID = SC.ScheduleID AND S.ID = 1 AND 
+                    WHERE S.ID = CD.StudentID AND CD.ClassID = HS.ClassID AND HS.ScheduleID = SC.ScheduleID AND S.ID = $id AND 
                         SC.Day = (
                             SELECT DAYNAME(CURDATE()+1)
                         )
@@ -52,5 +61,9 @@ class Student_model extends CI_Model
         $this->db->from('Score');
         $this->db->where('StudentID', $id);
         return $this->db->get()->result_array();
+    }
+
+    public function change_password($id){
+        
     }
 }

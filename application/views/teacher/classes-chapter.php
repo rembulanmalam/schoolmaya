@@ -11,30 +11,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
 	<link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
 
-
-	<style>
-
-		body{
-			font-family: 'Open Sans';
-			font-size:14px;
-			background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
-			background-repeat: no-repeat;
-			background-size:cover;
-			background-position:fixed;
-		}
-
-		h1{
-			font-family: 'Open Sans';
-		}
-
-		.img-fluid {
-			max-width: 100%;
-			height: auto;
-		}
-
-	</style>
-
-
 	<!-- Navbar -->	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">

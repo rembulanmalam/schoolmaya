@@ -34,7 +34,7 @@
 	</style>
 
 	<!-- Navbar -->	
-	<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
+	<nav class="navbar navbar-light navbar-expand-md fixed-top bg-white">
 		<div class="container">
 			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>"><img src="http://i66.tinypic.com/33dz3tk.png" style="width:120px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,10 +42,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="<?php echo (base_url('index.php/home/')) ?>">Home <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule</a>
 				</li>
 				<li class="nav-item">
@@ -69,7 +69,7 @@
 	<title>SekolahQu | Schedule</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container pt-5 mt-5">	
 		<div class="force-overflow">
 			<br><br><center><h1><b>Your Schedule</b></h1><center><br><br>
 			<table class="table table-hover table-light">
