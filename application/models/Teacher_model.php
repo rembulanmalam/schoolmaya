@@ -36,15 +36,26 @@ class Teacher_model extends CI_Model
     }
 
     //untuk liat daftar kelas dimana sang guru mengajar
-    public function teacher_class($id)
+    public function teacher_class_subject_chapter($id)
     {
-        $query = "  SELECT DISTINCT `HS`.ClassID, `HS`.SubjectName
-                    FROM `msteacher` AS `T`, `headersubject` AS `HS`, `schedule` AS `SC`
-                    WHERE T.ID = HS.TeacherID AND HS.ScheduleID = SC.ScheduleID AND T.ID = $id
-                    ORDER BY `HS`.ClassID, `SC`.ScheduleID ASC; ";
+        $query = "  SELECT DISTINCT `HS`.ClassID, `HS`.SubjectName, SCH.ChapterID, SCH.ChapterName 
+                    FROM `msteacher` AS `T`, `headersubject` AS `HS`, `schedule` AS `SC`, subjectchapter AS SCH 
+                    WHERE T.ID = HS.TeacherID AND HS.ScheduleID = SC.ScheduleID AND T.ID = $id AND SCH.SubjectID = HS.SubjectID ORDER BY `HS`.ClassID, `SC`.ScheduleID ASC  ";
         $result = $this->db->query($query);
         return $result->result_array();      
     }
+
+    //untuk liat daftar kelas dimana sang guru mengajar
+    public function teacher_class($id)
+    {
+        $query = "  SELECT DISTINCT `HS`.ClassID
+                    FROM `msteacher` AS `T`, `headersubject` AS `HS`, `schedule` AS `SC`
+                    WHERE T.ID = HS.TeacherID AND HS.ScheduleID = SC.ScheduleID AND T.ID = $id
+                    ORDER BY `HS`.ClassID ASC; ";
+        $result = $this->db->query($query);
+        return $result->result_array();      
+    }
+
 
     //untuk liat subjek dan chapter yang diajar guru
     public function teacher_subject($id)

@@ -3,46 +3,63 @@
 class User_model extends CI_Model 
 {
     protected $usertype;
-
+    
     //untuk cek apakah user yang login ada di database
     public function check_user($username, $password){
         //TODO encrypt password
-
-        //cek username & password yang cocok di tabel MsStudent
-        $array = array('Password' => $password, 'Username' => $username);
+        $default_password = 123456;
+        
+        $array = array('Username' => $username);
         $this->db->select("*");
         $this->db->from("MsStudent");
         $this->db->where($array);
         $query = $this->db->get();
         
-        if($query->num_rows() > 0)
+        if($query->num_rows() == 1)
         {
-            //kalo ketemu, return hasilnya
-            $this->usertype = array("user_type" => "student");
-            $this->session->set_userdata($this->usertype);
-            return $query->row_array();
+            $data = $query->row_array();
+            $user_password = $data['Password'];
+            
+            if($data['Password'] != $default_password)
+                $user_password = $this->encryption->decrypt($data['Password']);
+            
+            if($password == $user_password)
+            {
+                $this->usertype = array("user_type" => "student");
+                $this->session->set_userdata($this->usertype);
+                return $query->row_array();
+            }
+            
         }
         
         else
         {
-            //kalo ga ketemu, cari di tabel MsTeacher -> berarti usernya guru
             $this->db->select("*");
             $this->db->from("MsTeacher");
             $this->db->where($array);
             $query = $this->db->get();
-            if($query->num_rows() > 0)
+            
+            if($query->num_rows() == 1)
             {
-                //kalo ketemu, return hasilnya
-                //buat session teacher -> identifikasi yg login adalah teacher
-                $this->usertype = array("user_type" => "teacher");
-                $this->session->set_userdata($this->usertype);
-                return $query->row_array();  
+                $data = $query->row_array();
+                $user_password = $data['Password'];
+                
+                if($data['Password'] != $default_password)
+                    $user_password = $this->encryption->decrypt($data['Password']);
+                
+                if($password == $user_password)
+                {
+                    $this->usertype = array("user_type" => "teacher");
+                    $this->session->set_userdata($this->usertype);
+                    return $query->row_array();
+                }
             }
         }
     }
-
-    public function update_user($data)
-    {
-        # code...
+    
+    public function change_student_password($id, $data){
+        $this->db->where('ID', $id);
+        $this->db->update('MsStudent', $data);
+        return $this->db->affected_rows();
     }
 }

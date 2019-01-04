@@ -35,10 +35,8 @@ class Score extends CI_Controller
             //kalo yang login guru
             else
             {
-                //input nilai siswa
-                // $this->load->library("form_validation");
-                // $this->form_validation->set_rules('student_score', 'Student_score', 'required');
-                // $score = $this->input->post('score');
+                //redirect home
+                redirect(base_url('index.php/home/'));
             }
 
             //$page -> path view file

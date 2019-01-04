@@ -67,15 +67,21 @@
 </head>
 <body>
 	<div class="container mt-5">
-		<form class="form-inline" action = "show_chapter/" method = "POST">
-			<select class="form-control col-11" id="sel1" name="select_class">
-				<option value="" disabled selected hidden>--Select Class--</option>
-				<?php foreach ($class_list as $data): ?>
-					<option value="<?php echo $data['ClassID'] ?>"><?php echo $data['ClassID'] ?></option>
-				<?php endforeach;?>
-			</select>
-			<button type="submit" class="btn btn-primary ml-2">Submit</button>
-		</form>
+		<select class="form-control col-11" id="sel1" name="select_class">
+			<option id="class" value="" disabled selected hidden>--Select Class--</option>
+			<?php foreach ($class_list as $data): ?>
+				<option value="<?php echo $data['ClassID'] ?>"><?php echo $data['ClassID'] ?></option>
+			<?php endforeach;?>
+		</select>
+
+		<br>
+
+		<select class="form-control col-11" id="sel2" name="select_chapter">
+			<option id="chapter" value="" disabled selected hidden>--Select Chapter--</option>
+			<?php foreach ($chapter_list as $data): ?>
+				<option value="<?php echo $data['ChapterID'] ?>"><?php echo $data['ChapterID'] ?></option>
+			<?php endforeach;?>
+		</select>
 	</div>
     
 </body>

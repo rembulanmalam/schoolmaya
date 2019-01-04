@@ -62,8 +62,4 @@ class Student_model extends CI_Model
         $this->db->where('StudentID', $id);
         return $this->db->get()->result_array();
     }
-
-    public function change_password($id){
-        
-    }
 }

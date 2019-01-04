@@ -21,6 +21,7 @@ class Classes extends CI_Controller
         }
 
         $this->data['class_list'] = $this->teacher_model->teacher_class($this->user_account['ID']);
+        $this->data['chapter_list'] = $this->teacher_model->teacher_class_subject_chapter($this->user_account['ID']);
     }
 
     public function index()
@@ -65,5 +66,9 @@ class Classes extends CI_Controller
 
             $this->load->view($page, $this->data);
         }
+    }
+
+    public function show_class(){
+        $input = $this->input->post();
     }
 }
