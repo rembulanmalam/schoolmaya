@@ -53,9 +53,6 @@
 					<a class="nav-link" href="<?php echo (base_url('index.php/classes/')) ?>">Class</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
-				</li>
-				<li class="nav-item">
 					<a class="btn btn-outline-danger" href="<?php echo (base_url('index.php/login/logout/')) ?>" style="font-size:14px">Logout</a>
 				</li>
 				</ul>

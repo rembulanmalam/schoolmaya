@@ -12,7 +12,7 @@ class Teacher_model extends CI_Model
         return $result->result_array();      
     }
 
-    //untuk ambil schedule besok dari siswa
+    //untuk ambil schedule besok dari teacher
     public function teacher_next_schedule($id)
     {
         $query = "  SELECT `T`.Name, `HS`.ClassID, `HS`.SubjectName, `SC`.Day, `SC`.Start, `SC`.Duration
@@ -73,7 +73,7 @@ class Teacher_model extends CI_Model
     {
         $query = " 	SELECT *
                     FROM `msstudent` AS `S`, `classdetail` AS `CD`
-                    WHERE S.ID = CD.StudentID AND CD.ClassID = $classid
+                    WHERE S.ID = CD.StudentID AND CD.ClassID = '$classid'
                     ORDER BY S.Name ASC ";
         $result = $this->db->query($query);
         return $result->result_array();   

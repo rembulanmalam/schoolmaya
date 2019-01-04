@@ -21,7 +21,6 @@ class Classes extends CI_Controller
         }
 
         $this->data['class_list'] = $this->teacher_model->teacher_class($this->user_account['ID']);
-        $this->data['chapter_list'] = $this->teacher_model->teacher_class_subject_chapter($this->user_account['ID']);
     }
 
     public function index()
@@ -47,28 +46,16 @@ class Classes extends CI_Controller
 
     }
 
-    public function show_chapter($chapterid = 0)
-    {
-        $this->data['active'] = $this->input->post('select_class');
-        if($chapterid == 0) 
-        {
-            //sampe if ini bener
-            $this->data['subject'] = $this->teacher_model->teacher_subject($this->user_account['ID']);
-            $page = $this->user_account['user_type'] . "/classes-chapter";
-
-            $this->load->view($page, $this->data);
-        }
-        else
-        {
-            //tapi else ini belum kelar
-            $this->data['student_list'] = $this->teacher_model->teacher_class($this->data['active']);
-            $page = $this->user_account['user_type'] . "/classes-student";
-
-            $this->load->view($page, $this->data);
-        }
+    public function show_class(){
+        $input_class = $this->input->post('select_class');        
+        $chapter = $this->teacher_model->teacher_class_subject_chapter($this->user_account['ID']);
+        echo json_encode($chapter);
     }
 
-    public function show_class(){
-        $input = $this->input->post();
+    public function show_student(){
+        $input_class = $this->input->post('select_class');
+        $input_chapter = $this->input->post('select_chapter');
+        $student_list = $this->teacher_model->student_list($input_class);
+        echo json_encode($student_list);
     }
 }
