@@ -69,13 +69,25 @@ class Teacher_model extends CI_Model
     }
 
     //untuk mengambil data seluruh siswa dalam satu kelas
-    public function student_list($classid)
+    public function student_list($classid, $chapterid)
     {
-        $query = " 	SELECT *
-                    FROM `msstudent` AS `S`, `classdetail` AS `CD`
-                    WHERE S.ID = CD.StudentID AND CD.ClassID = '$classid'
-                    ORDER BY S.Name ASC ";
+        $query = "  SELECT * 
+                    FROM `msstudent` AS `S` 
+                    JOIN `classdetail` AS `CD` ON S.ID = CD.StudentID 
+                    LEFT JOIN score AS SCR ON SCR.StudentID = CD.StudentID AND SCR.ChapterID = '$chapterid'
+                    WHERE CD.ClassID = '$classid' 
+                    ORDER BY S.Name ASC";
         $result = $this->db->query($query);
         return $result->result_array();   
+    }
+
+    public function create_new_score($data){
+        $this->db->insert('Score', $data);
+        return $this->db->affected_rows();
+    }
+
+    public function update_score($data){
+        $this->db->update('Score', $data, array( 'StudentID' => $data['StudentID'], 'ChapterID' => $data['ChapterID']));
+        return $this->db->affected_rows();
     }
 }

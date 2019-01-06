@@ -43,7 +43,7 @@
 
 				<form action = "index.php/login/process/" method = "POST" >
 					<div class="form-group">
-						<label for="username">Email</label>
+						<label for="username">Username</label>
 						<input type="text" class="form-control login-form" placeholder="Enter username" name = "username">
 					</div>
 					<div class="form-group">

@@ -60,6 +60,32 @@
     <title>SekolahQu | Your Class</title>
 </head>
 <body>
+	<!-- Modal -->
+	<div class="modal fade" id="changeScore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalTitle"></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" style='display:none'>
+						<button type="button" class="close" aria-hidden="true">&times;</button>
+							<strong>Update Failed!</strong> The value you entered does not meet requirement.
+					</div>
+					<h3>Score : </h3>
+					<input id='new-score' type="text" class="form-control" placeholder="Input Score" name = "score"/>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button id='save' type="Submit" class="btn btn-primary" onclick="save()">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="container mt-5">
 		<select class="form-control col-11 w-100" id="sel1" name="select_class">
 			<option id="class" value="" disabled selected hidden>--Select Class--</option>
@@ -84,73 +110,16 @@
 		</div>
 	</div>
 
+<!-- javascript buat page ini -->
+<script src="<?php echo base_url('front/js/classes.js') ?>"></script> 
 <script type='text/javascript'>
-	$(document).ready(function(){
-		$('#sel2').hide();
-		var classid;
-		var chapter;
-
-		$('#sel1').change(function(){
-			//reset selection box 2
-			$('#sel2').html('');
-			classid = $(this).val();
-
-			$.ajax({
-				url: '<?php echo base_url('index.php/classes/show_class'); ?>',
-				method: 'post',
-				dataType: 'json',
-				
-				success: function(response){
-					//show selection 2
-					$('#sel2').show();
-					$('#sel2').append( "<option id='class' value='' disabled selected hidden>--Select Class--</option>" );
-					for(var i = 0 ; i < response.length ; i++){
-						$('#sel2').append(
-							"<option value=" + response[i]["ChapterID"] + ">" +
-							response[i]["ChapterID"] +
-							"</option>"
-						);
-					}
-				}
-			});
-		});
-
-		$('#sel2').change(function(){
-			//reset yang perlu direset
-			$('#student_container').html('');
-			$('#detail').html('');
-
-			var chapterid = $(this).val();
-			$.ajax({
-				url: '<?php echo base_url('index.php/classes/show_student'); ?>',
-				method: 'post',
-				data: {select_class: classid, select_chapter: chapterid},
-				dataType: 'json',
-				
-				success: function(response){
-					$('#detail').append(
-						"<h1>" + classid + "</h1>" +
-						"<h3>" + chapterid + "</h3>"
-					)
-
-					for(var i = 0 ; i < response.length ; i++){
-						$('#student_container').append(
-							"<div class='col-auto mb-3'>" +
-						 		"<div class='card' style='width: 18rem;'>" +
-								 	"<div class='card-body'>" +
-									 	"<img class='card-img-top img-16rem mb-4' src='http://localhost/schoolmaya/"
-										+ response[i]['ProfilePicture'] + "' alt='Card image cap'>" +
-										"<h5 class='card-title'>" + response[i]['Name'] + "</h5>" +
-										"<h4 class='card-title mb-2'>Score</h6>" +
-									"</div>" +
-								"</div>" +
-							"</div>"
-						);	
-					}
-				}
-			});
-		});
-	});
+	var student_list;
+	var clicked_id;
+	var chapterid;
+	var baseURL = '<?php echo base_url(); ?>';
+	var classid;
+    var chapter;
+    var selected;
  </script>
     
 </body>

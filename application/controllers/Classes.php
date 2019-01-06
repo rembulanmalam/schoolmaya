@@ -31,14 +31,7 @@ class Classes extends CI_Controller
         }
         //kalo yang login guru
         else {
-            //input nilai siswa
-            // $this->load->library("form_validation");
-            // $this->form_validation->set_rules('student_score', 'Student_score', 'required');
-            // $score = $this->input->post('score');
-
-            //$page -> path view file
-            
-
+            //input nilai siswa      
             $page = $this->user_account['user_type'] . "/classes";
 
             $this->load->view($page, $this->data);
@@ -55,7 +48,31 @@ class Classes extends CI_Controller
     public function show_student(){
         $input_class = $this->input->post('select_class');
         $input_chapter = $this->input->post('select_chapter');
-        $student_list = $this->teacher_model->student_list($input_class);
+        $student_list = $this->teacher_model->student_list($input_class, $input_chapter);
         echo json_encode($student_list);
+    }
+
+    public function change_score(){
+        $id = $this->input->post('student_id');
+        $chapter = $this->input->post('chapter_id');
+        $new_score = $this->input->post('score');
+        $old_score = $this->input->post('old_score');
+        $result;
+
+        $data = array(
+            'StudentID' => $id,
+            'Score' => $new_score,
+            'ChapterID' => $chapter
+        );
+       
+        if($old_score == 'N/A')
+        {    
+            $result = $this->teacher_model->create_new_score($data);
+        }
+        else if($old_score >= 0 && $old_score <= 100){
+            $result = $this->teacher_model->update_score($data);
+        }
+        
+        echo json_encode($result);
     }
 }
