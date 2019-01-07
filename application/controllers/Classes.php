@@ -52,6 +52,47 @@ class Classes extends CI_Controller
         echo json_encode($student_list);
     }
 
+    public function show_exam(){
+        $input_class = $this->input->post('select_class');
+        $input_chapter = $this->input->post('select_chapter');
+        $exam_schedule = $this->teacher_model->exam_schedule($input_chapter, $input_class);
+        echo json_encode($exam_schedule);
+    }
+
+    public function show_available_schedule(){
+        //show schedule yang dipilih
+        //range schedule yang bisa dipilih adalah 1 bulan dari hari sekarang,
+        //dan yang harinya sesuai schedule rutin
+        $input_subject = $this->input->post('select_subject');
+        $input_class = $this->input->post('select_class');
+        $result = $this->teacher_model->teacher_subject_class_schedule($this->user_account['ID'], $input_subject, $input_class);
+        $length = count($result);
+
+        $dates = array();
+        for($i = 0; $i < $length ; $i++){
+            $dates[] = strtotime($result[$i]['Day']);
+        }
+        for($i = 0; $i < $length * 3 ; $i++){
+            $dates[] = strtotime('+1 week', $dates[$i]);
+        }
+        echo json_encode($dates);
+    }
+
+    public function change_exam(){
+        $input_date = $this->input->post('select_date');
+        $input_chapter = $this->input->post('select_chapter');
+        $input_class = $this->input->post('select_class');
+
+        $data = array (
+            'ClassID' => $input_class,
+            'ExamSchedule' => $input_date,
+            'ChapterID' => $input_chapter
+        );
+
+        $result = $this->teacher_model->update_exam($data);
+        echo json_encode($result);
+    }
+
     public function change_score(){
         $id = $this->input->post('student_id');
         $chapter = $this->input->post('chapter_id');
@@ -75,4 +116,6 @@ class Classes extends CI_Controller
         
         echo json_encode($result);
     }
+
+
 }

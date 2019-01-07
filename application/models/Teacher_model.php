@@ -26,19 +26,10 @@ class Teacher_model extends CI_Model
         return $result->result_array();      
     }
 
-    //untuk input nilai siswa
-    public function input_score($id, $score, $chapter)
-    {
-        $query = "   INSERT INTO Score VALUES
-                    ($id, $score, $chapter) ";
-        $result = $this->db->query($query);
-        return $result->row_count();
-    }
-
     //untuk liat daftar kelas dimana sang guru mengajar
     public function teacher_class_subject_chapter($id)
     {
-        $query = "  SELECT DISTINCT `HS`.ClassID, `HS`.SubjectName, SCH.ChapterID, SCH.ChapterName 
+        $query = "  SELECT DISTINCT `HS`.ClassID, `HS`.SubjectName, SCH.ChapterID, SCH.ChapterName, SCH.SubjectID
                     FROM `msteacher` AS `T`, `headersubject` AS `HS`, `schedule` AS `SC`, subjectchapter AS SCH 
                     WHERE T.ID = HS.TeacherID AND HS.ScheduleID = SC.ScheduleID AND T.ID = $id AND SCH.SubjectID = HS.SubjectID ORDER BY `HS`.ClassID, `SC`.ScheduleID ASC  ";
         $result = $this->db->query($query);
@@ -89,5 +80,28 @@ class Teacher_model extends CI_Model
     public function update_score($data){
         $this->db->update('Score', $data, array( 'StudentID' => $data['StudentID'], 'ChapterID' => $data['ChapterID']));
         return $this->db->affected_rows();
+    }
+
+    public function exam_schedule($chapterid, $classid){
+        $query = "  SELECT * FROM Exam WHERE ChapterID = '$chapterid' AND ClassID = '$classid'";
+        $result = $this->db->query($query);
+        return $result->row_array();  
+    }
+
+    public function update_exam($data){
+        $this->db->replace('exam', $data);
+        return $this->db->affected_rows();
+    }
+
+    //liat schedule teacher untuk subject dan kelas tertentu
+    public function teacher_subject_class_schedule($id, $subjectid, $classid)
+    {
+        $query = "  SELECT DISTINCT `T`.Name, `HS`.ClassID, `HS`.SubjectName, `SC`.Day
+                    FROM `msteacher` AS `T`, `headersubject` AS `HS`, `schedule` AS `SC`
+                    WHERE T.ID = HS.TeacherID AND HS.ScheduleID = SC.ScheduleID AND T.ID = $id 
+                        AND HS.SubjectID = '$subjectid' AND HS.ClassID = '$classid'
+                    ORDER BY `HS`.ClassID, `SC`.ScheduleID ASC; ";
+        $result = $this->db->query($query);
+        return $result->result_array();      
     }
 }

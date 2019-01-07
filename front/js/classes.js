@@ -53,11 +53,56 @@ $(document).ready(function(){
         }      
     });
 
-    $(".close").click( function ()
-    {
-        $(".alert").hide();
+    $(".close").click( function (){
+        $("#failed").hide();
+    });
+
+    $('#change-exam').click(function(){
+        
+        $.ajax({
+            url: baseURL+'index.php/classes/show_available_schedule',
+            method: 'post',
+            dataType: 'json',
+            data: { select_subject: chapter[selected]['SubjectID'], select_class: classid},
+
+            success: function(response){
+                var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                for(var i = 0; i < response.length ; i++){
+                    date_list[i] = new Date(1000*response[i]);
+                    iso_date[i] = new Date(date_list[i].getTime() - (date_list[i].getTimezoneOffset() * 60000)).toISOString();
+                }
+                console.log(iso_date);
+                for(var i = 0; i < response.length; i++){
+                    $('#sel3').append(
+                        "<option value=" + iso_date[i] + ">" +
+                        date_list[i].toLocaleDateString('en-GB', options) + "</option>"
+                    );
+                }
+            },
+        });
+        $('#changeExam').modal("show");
     });
 });
+
+function save_exam(){
+    var date_selected = $('#sel3').val();
+    console.log(date_selected);
+    $.ajax({
+        url: baseURL+'index.php/classes/change_exam',
+        method: 'post',
+        dataType: 'json',
+        data: {select_date: date_selected, select_chapter: chapterid, select_class:classid},
+
+        success: function(){
+            console.log("suskes save");
+            $('#change-exam').modal("hide");
+            show_student(); 
+        },
+        error: function(){
+            console.log("gagal save");
+        }
+    });
+}
 
 function save(){
     var new_score = $('#new-score').val();
@@ -76,12 +121,12 @@ function save(){
             },
 
             error: function(){
-                $('.alert').show();
+                $('#failed').show();
             }
         });
         return false;
     }
-    $('.alert').show();
+    $('#failed').show();
     console.log("wrong");
     return;
 }
@@ -90,7 +135,34 @@ function show_student(){
     //reset yang perlu direset
     $('#student_container').html('');
     $('#detail').html('');
+    $('#exam-alert-text').html('');
+    $('#exam-alert').show();
 
+    //ajax for exam schedule alert
+    $.ajax({
+        url: baseURL+'index.php/classes/show_exam',
+        method: 'post',
+        data: {select_chapter: chapterid, select_class:classid},
+        dataType: 'json',
+
+        success: function(response){
+            console.log(response);
+            if(response == null){
+                $('#exam-alert-text').html('Exam schedule for this chapter has not been selected!');
+            }
+            else{
+                $('#exam-alert-text').html("This chapter exam schedule is <strong>" +
+                                        response['ExamSchedule'] + "</strong>"
+                );
+            }
+        },
+
+        error: function(){
+           console.log("fail");
+        }
+    });
+
+    //ajax for student scorelist
     $.ajax({
         url: baseURL+'index.php/classes/show_student',
         method: 'post',
@@ -105,7 +177,7 @@ function show_student(){
             }
 
             $('#detail').append(
-                "<h1>" + classid + "</h1>" +
+                "<h1 class='display-3'>" + classid + "</h1>" +
                 "<strong><h3>" + chapter[selected]['SubjectName'] + "</h3></strong>" +
                 "<h5>" + chapter[selected]['ChapterID'] + " - " + chapter[selected]['ChapterName']+ "</h5>"
             )

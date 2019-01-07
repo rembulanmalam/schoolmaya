@@ -29,6 +29,10 @@
 			object-position:center;
 		}
 
+		#exam-alert{
+ 			font-size: 16px;
+		}
+
 	</style>
 
 	<!-- Navbar -->	
@@ -60,7 +64,7 @@
     <title>SekolahQu | Your Class</title>
 </head>
 <body>
-	<!-- Modal -->
+	<!-- Modal Change Score -->
 	<div class="modal fade" id="changeScore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -71,7 +75,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="alert alert-danger" style='display:none'>
+					<div id="failed" class="alert alert-danger" style='display:none'>
 						<button type="button" class="close" aria-hidden="true">&times;</button>
 							<strong>Update Failed!</strong> The value you entered does not meet requirement.
 					</div>
@@ -80,14 +84,40 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button id='save' type="Submit" class="btn btn-primary" onclick="save()">Save changes</button>
+					<button id='save' type="Submit" class="btn btn-danger" onclick="save()">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal Change Exam Schedule -->
+	<div class="modal fade" id="changeExam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalTitle">Pick Date</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div id="failed" class="alert alert-danger" style='display:none'>
+						<button type="button" class="close" aria-hidden="true">&times;</button>
+							<strong>Update Failed!</strong> The value you entered does not meet requirement.
+					</div>
+					<select class="form-control w-100" id="sel3" name="select_class">
+					</select>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button id='save' type="Submit" class="btn btn-danger" onclick="save_exam()">Save changes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="container mt-5">
-		<select class="form-control col-11 w-100" id="sel1" name="select_class">
+		<select class="form-control w-100" id="sel1" name="select_class">
 			<option id="class" value="" disabled selected hidden>--Select Class--</option>
 			<?php foreach ($class_list as $data): ?>
 				<option value="<?php echo $data['ClassID'] ?>"><?php echo $data['ClassID'] ?></option>
@@ -96,13 +126,20 @@
 
 		<br>
 		<div id="chapter-container"> 
-			<select class="form-control col-11 w-100" id="sel2" name="select_chapter">
+			<select class="form-control w-100" id="sel2" name="select_chapter">
 				<option id="chapter" value="" disabled selected hidden>--Select Chapter--</option>
 			</select>
 		</div>
 
 		<br>
 		<div id="detail"> </div>
+		<br>
+		<div id="exam-alert" style="display:none">
+			<div class="alert alert-warning d-flex justify-content-between align-items-center" role="alert">
+				<span id="exam-alert-text">Exam schedule for this chapter has not been selected</span>
+				<button id="change-exam" type="button" class="btn btn-outline-danger" data-toggle='modal' data-target='#changeExam'>Select Date</button>
+			</div>
+		</div>
 
 		<div class="container-fluid mt-4">
 			<div id="student_container" class="row justify-content-center">
@@ -111,15 +148,13 @@
 	</div>
 
 <!-- javascript buat page ini -->
-<script src="<?php echo base_url('front/js/classes.js') ?>"></script> 
+<script src="<?php echo base_url('front/js/classes.js') ?>"></script>
+<script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 <script type='text/javascript'>
-	var student_list;
-	var clicked_id;
-	var chapterid;
 	var baseURL = '<?php echo base_url(); ?>';
-	var classid;
-    var chapter;
-    var selected;
+	var student_list, clicked_id, chapterid, classid;
+    var chapter, selected, date_list = [], iso_date = [];
  </script>
     
 </body>
