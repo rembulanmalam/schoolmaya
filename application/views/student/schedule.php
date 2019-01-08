@@ -5,73 +5,63 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="<?php echo base_url('front/custom.css') ?>">	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
 	<link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
 
-    <style>
-
-	body{
-		font-family: 'Open Sans';
-		font-size:14px;
-		background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
-		background-repeat: no-repeat;
-		background-size:cover;
-		background-position:fixed;
-	}
-
-	h1{
-		font-family: 'Open Sans';
-	}
-
-	.img-fluid {
-		max-width: 100%;
-		height: auto;
-	}
-
-	</style>
+	<script src="<?php echo base_url('front/js/all.js') ?>"></script>
+	<script type='text/javascript'>
+		var baseURL = '<?php echo base_url(); ?>';
+ 	</script>
 
 	<!-- Navbar -->	
-	<nav class="navbar navbar-light navbar-expand-md fixed-top bg-white">
+	<nav id="nav" class="navbar navbar-dark navbar-expand-md fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>"><img src="http://i66.tinypic.com/33dz3tk.png" style="width:120px"></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand gilroy-bold" href="<?php echo (base_url('index.php/home/')) ?>">Schoolmaya</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo (base_url('index.php/home/')) ?>">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
-				</li>
-					<div class="dropdown">
-						<a class="btn btn-outline-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:14px">
-							Profile
-						</a>
 
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item" href="<?php echo (base_url('index.php/profile/')) ?>">Edit Profile</a>
-							<a class="dropdown-item" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo (base_url('index.php/home/')) ?>">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo (base_url('index.php/score/')) ?>">Score</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Account
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a id="student" class="dropdown-item" href="<?php echo (base_url('index.php/profile/')) ?>">Edit Profile</a>
+							<a id="student" class="dropdown-item" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
 						</div>
-					</div>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
+
 	<title>SekolahQu | Schedule</title>
 </head>
 <body>
-    <div class="container pt-5 mt-5">	
-		<div class="force-overflow">
-			<br><br><center><h1><b>Your Schedule</b></h1><center><br><br>
+	<!-- Header -->
+	<div class="d-flex justify-content-start align-items-center align-self-center header-small student">
+        <div class="container">
+            <h1 class="display-3">Your Schedule</h1>
+        </div>
+	</div>
+
+    <div class="container container-body">	
 			<table class="table table-hover table-light">
 				<thead class="thead-light">
 					<tr>

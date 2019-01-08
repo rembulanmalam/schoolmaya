@@ -4,63 +4,50 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">	
+	<link rel="stylesheet" href="<?php echo base_url('front/custom.css') ?>">
+		
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
 	<link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
-
-
-	<style>
-
-		body{
-			font-family: 'Open Sans';
-			font-size:14px;
-			background-image:url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
-			background-repeat: no-repeat;
-			background-size:cover;
-			background-position:fixed;
-		}
-
-		.img-16rem{
-			height: 200px;
-			object-fit:cover;
-			object-position:center;
-		}
-
-		#exam-alert{
- 			font-size: 16px;
-		}
-
-	</style>
+	
+	<script src="<?php echo base_url('front/js/all.js') ?>"></script>
 
 	<!-- Navbar -->	
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav id="nav" class="navbar navbar-dark navbar-expand-md fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="<?php echo (base_url('index.php/home/')) ?>"><img src="http://i66.tinypic.com/33dz3tk.png" style="width:120px"></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand gilroy-bold" href="<?php echo (base_url('index.php/home/')) ?>">Schoolmaya</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="<?php echo (base_url('index.php/home/')) ?>">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo (base_url('index.php/classes/')) ?>">Class</a>
-				</li>
-				<li class="nav-item">
-					<a class="btn btn-outline-danger" href="<?php echo (base_url('index.php/login/logout/')) ?>" style="font-size:14px">Logout</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo (base_url('index.php/home/')) ?>">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo (base_url('index.php/schedule/')) ?>">Schedule</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="<?php echo (base_url('index.php/classes/')) ?>">Class</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Account
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a id="teacher" class="dropdown-item" href="<?php echo (base_url('index.php/profile/')) ?>">Edit Profile</a>
+							<a id="teacher" class="dropdown-item" href="<?php echo (base_url('index.php/login/logout/')) ?>">Logout</a>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
+	
     <title>SekolahQu | Your Class</title>
 </head>
 <body>
@@ -115,25 +102,29 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="d-flex justify-content-start align-items-center align-self-center header-auto teacher">
+		<div class="container mt-5">
+			<select class="form-control w-100" id="sel1" name="select_class">
+				<option id="class" value="" disabled selected hidden>--Select Class--</option>
+				<?php foreach ($class_list as $data): ?>
+					<option value="<?php echo $data['ClassID'] ?>"><?php echo $data['ClassID'] ?></option>
+				<?php endforeach;?>
+			</select>
+
+			<br>
+			<div id="chapter-container"> 
+				<select class="form-control w-100" id="sel2" name="select_chapter">
+					<option id="chapter" value="" disabled selected hidden>--Select Chapter--</option>
+				</select>
+			</div>
+
+			<br>
+			<div id="detail" class="mb-5"></div>
+		</div>
+	</div>
 
 	<div class="container mt-5">
-		<select class="form-control w-100" id="sel1" name="select_class">
-			<option id="class" value="" disabled selected hidden>--Select Class--</option>
-			<?php foreach ($class_list as $data): ?>
-				<option value="<?php echo $data['ClassID'] ?>"><?php echo $data['ClassID'] ?></option>
-			<?php endforeach;?>
-		</select>
-
-		<br>
-		<div id="chapter-container"> 
-			<select class="form-control w-100" id="sel2" name="select_chapter">
-				<option id="chapter" value="" disabled selected hidden>--Select Chapter--</option>
-			</select>
-		</div>
-
-		<br>
-		<div id="detail"> </div>
-		<br>
 		<div id="exam-alert" style="display:none">
 			<div class="alert alert-warning d-flex justify-content-between align-items-center" role="alert">
 				<span id="exam-alert-text">Exam schedule for this chapter has not been selected</span>
@@ -146,6 +137,9 @@
 			</div>
 		</div>
 	</div>
+	
+
+
 
 <!-- javascript buat page ini -->
 <script src="<?php echo base_url('front/js/classes.js') ?>"></script>

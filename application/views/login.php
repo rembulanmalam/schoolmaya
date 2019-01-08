@@ -11,25 +11,34 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
 	<link rel="icon" type="image/ico" href="http://i63.tinypic.com/21lo7qe.png"/>
 
-	<nav class="navbar navbar-light navbar-expand-md fixed-top bg-white">
-        <div class="container-fluid"><a class="navbar-brand" href="#" style="font-size:25px;">Schoolmaya</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="font-size:20px;">about us</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="font-size:20px;">contact us</a></li>
-                </ul>
-        	</div>
-        </div>
+	<!-- Navbar -->	
+	<nav id="nav" class="navbar navbar-dark navbar-expand-md fixed-top">
+	<div class="container">
+		<a class="navbar-brand gilroy-bold" href="<?php echo (base_url('index.php/home/')) ?>">Schoolmaya</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo (base_url()) ?>">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo (base_url('index.php/about-us/')) ?>">About Us</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 	</nav>
 	
 <title>SekolahQu | Login</title>
 </head>
-<body>
+<body class="body-login">
 <div class="container">
 	<div class="row" id="login-row">
 		<div class="col-xl-4 bg-white" style="padding:5%;">
-			<h1>Login</h1>			
+			<h1 class="gilroy-light">Login</h1>			
 			<div class="form-group" style="padding-top:20px;">
 				<?php if ($this->session->flashdata('Failed')): ?>
 					<p class='flash_msg flash_fail'>  </p>

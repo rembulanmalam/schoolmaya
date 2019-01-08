@@ -44,7 +44,14 @@ class Profile extends CI_Controller
             $new_password = $this->encryption->encrypt($new_password);
             
             $data = array( 'Password' => $new_password );
-            $flag = $this->user_model->change_student_password($this->user_account['ID'], $data);
+
+            if($user_account['user_type'] == 'student'){
+                $flag = $this->user_model->change_student_password($this->user_account['ID'], $data);
+            }
+            else{
+                $flag = $this->user_model->change_teacher_password($this->user_account['ID'], $data);
+            }
+            
             
             if(isset($flag))
             {

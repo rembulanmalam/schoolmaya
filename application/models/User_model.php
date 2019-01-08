@@ -62,4 +62,10 @@ class User_model extends CI_Model
         $this->db->update('MsStudent', $data);
         return $this->db->affected_rows();
     }
+
+    public function change_teacher_password($id, $data){
+        $this->db->where('ID', $id);
+        $this->db->update('MsTeacher', $data);
+        return $this->db->affected_rows();
+    }
 }

@@ -1,3 +1,161 @@
+body {
+  font-size: 14px;
+  background-color: f5f5f5;
+  background-image: linear-gradient(326deg, #f5f5f5 100%, #f5f5f5 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.body-login {
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+}
+
+.container-body {
+  padding: 32px;
+}
+
+.navbar.navbar-dark.navbar-expand-md.fixed-top.scrolled {
+  -webkit-transition: background-color 200ms ease-out;
+  transition: background-color 200ms ease-out;
+}
+
+.btn.teacher-btn {
+  color: #fff;
+  background-color: #1d537a;
+}
+
+.btn.teacher.btn:hover {
+  background-color: #0d324d;
+}
+
+#teacher.dropdown-item.active, #teacher.dropdown-item:active {
+  color: #fff;
+  background-color: #0d324d;
+}
+
+#teacher.dropdown-item.hover, #teacher.dropdown-item:hover {
+  color: #fff;
+  background-color: #0d324d;
+}
+
+.teacher {
+  background-color: #7f5a83;
+  background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+  color: white;
+}
+
+#student.dropdown-item.active, #student.dropdown-item:active {
+  color: #fff;
+  background-color: #6a3875;
+}
+
+#student.dropdown-item.hover, #student.dropdown-item:hover {
+  color: #fff;
+  background-color: #6a3875;
+}
+
+.student {
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  color: white;
+}
+
+.navbar-expand-md .navbar-nav .dropdown-menu {
+  border-radius: 0px;
+  padding: 0px;
+}
+
+.header {
+  padding-top: 40px;
+  height: 300px;
+}
+
+.header-small {
+  padding-top: 40px;
+  height: 160px;
+}
+
+.header-auto {
+  padding-top: 40px;
+  height: auto;
+}
+
+.row {
+  margin: 0px;
+}
+
+.rounded-circle {
+  height: 100px;
+  width: 100px;
+}
+
+@media (min-width: 768px) {
+  .rounded-circle {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+.col.tomorrow-schedule {
+  border-width: 20px;
+  margin: 20px;
+  border-color: black;
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.col.next-exam {
+  border-width: 20px;
+  margin: 20px;
+  border-color: black;
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.mini-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.col.home-schedule-box {
+  border-width: 20px;
+  margin: 20px;
+  border-color: black;
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+@font-face {
+  font-family: 'gilroy-extrabold';
+  src: url("fonts/gilroy-extrabold-webfont.woff2") format("woff2"), url("fonts/gilroy-extrabold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gilroy-light';
+  src: url("fonts/gilroy-light-webfont.woff2") format("woff2"), url("fonts/gilroy-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.gilroy-bold {
+  font-family: 'gilroy-extrabold';
+}
+
+.gilroy-light {
+  font-family: 'gilroy-light';
+}
+
+.raleway-light {
+  font-family: 'raleway';
+  font-weight: 500;
+}
+
 .vertical-align {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12,35 +170,27 @@ div.dropdown-menu.long-drop-down {
   min-width: 100%;
 }
 
-select:invalid {
-  color: gray;
-}
-
-body {
-  font-family: 'Open Sans';
-  padding: 20px;
-  font-size: 14px;
-  background-image: url("https://c1.staticflickr.com/9/8711/17095171331_4ec22e0407_b.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: fixed;
-}
-
 h1#titles {
   font-family: 'Raleway';
 }
 
-.navbar.navbar-light.navbar-expand-md.fixed-top.bg-white {
+.navbar.navbar-expand-lg.navbar-dark.fixed-top {
   -webkit-box-shadow: 0px -76px 81px 44px;
           box-shadow: 0px -76px 81px 44px;
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
 }
 
-@media (max-width: 767px) {
-  .navbar.navbar-light.navbar-expand-md.fixed-top.bg-white {
-    -webkit-box-shadow: 0px -76px 81px 44px;
-            box-shadow: 0px -76px 81px 44px;
-    position: static;
-  }
+#exam-alert {
+  font-size: 16px;
+}
+
+.img-16rem {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 #login-row {

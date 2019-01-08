@@ -36,10 +36,11 @@ class Home extends CI_Controller
 			if($data['user_account']['user_type'] == "student")
 			{
 				$this->load->model('student_model');
-
+				
 				//ambil data dari database
 				$data['class'] = $this->student_model->get_student_class($data['user_account']['ID']);
-				$data['schedule'] = $this->student_model->student_next_schedule($data['user_account']['ID']);				
+				$data['schedule'] = $this->student_model->student_next_schedule($data['user_account']['ID']);
+				$data['exam'] = $this->student_model->student_next_exam($data['class']['ClassID']);	
 			}
 			//kalo yang login guru
 			else
@@ -53,5 +54,10 @@ class Home extends CI_Controller
 			$page =  $data['user_account']['user_type'] . "/home";
 			$this->load->view($page, $data);
         }	
+	}
+
+	public function check_usertype(){
+		$data['user_account'] = $this->session->userdata();
+		echo json_encode($data['user_account']['user_type']);
 	}
 }

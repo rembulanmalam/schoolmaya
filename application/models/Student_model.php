@@ -8,7 +8,7 @@ class Student_model extends CI_Model
                     FROM MsStudent AS S, ClassDetail AS CD, Class AS C 
                     WHERE S.ID = CD.StudentID AND C.ClassID = CD.ClassID AND S.ID = $id; ";
         $result = $this->db->query($query);
-        return $result->result_array(); 
+        return $result->row_array(); 
     }
 
     //ambil semua dari kolom MsStudent
@@ -54,11 +54,23 @@ class Student_model extends CI_Model
         return $result->result_array();      
     }
 
+    public function student_next_exam($classid){
+        $where = "ClassID = '$classid' AND ExamSchedule > CURDATE()";
+        $this->db->select('ExamSchedule, SubjectID, ChapterName');
+        $this->db->from('Exam');
+        $this->db->join('SubjectChapter', 'Exam.ChapterId = SubjectChapter.ChapterId');
+        $this->db->where($where);
+        
+        $this->db->limit(10);
+        return $this->db->get()->result_array();
+    }
+
     //untuk ambil skor dari siswa
     public function student_score($id)
     {
         $this->db->select('*');
         $this->db->from('Score');
+        $this->db->join('SubjectChapter', 'Score.ChapterId = SubjectChapter.ChapterId');
         $this->db->where('StudentID', $id);
         return $this->db->get()->result_array();
     }
