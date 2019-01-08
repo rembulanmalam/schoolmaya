@@ -74,4 +74,12 @@ class Student_model extends CI_Model
         $this->db->where('StudentID', $id);
         return $this->db->get()->result_array();
     }
+
+    public function get_profile_picture($id)
+    {
+        $this->db->select('ProfilePicture');
+        $this->db->from('MsStudent');
+        $this->db->where('id', $id);
+        return $this->db->get()->row_array();
+    }
 }

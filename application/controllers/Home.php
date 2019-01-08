@@ -40,7 +40,8 @@ class Home extends CI_Controller
 				//ambil data dari database
 				$data['class'] = $this->student_model->get_student_class($data['user_account']['ID']);
 				$data['schedule'] = $this->student_model->student_next_schedule($data['user_account']['ID']);
-				$data['exam'] = $this->student_model->student_next_exam($data['class']['ClassID']);	
+				$data['exam'] = $this->student_model->student_next_exam($data['class']['ClassID']);
+				$data['PP'] = $this->student_model->get_profile_picture($data['user_account']['ID']);
 			}
 			//kalo yang login guru
 			else
@@ -49,6 +50,7 @@ class Home extends CI_Controller
 
 				//ambil data dari database
 				$data['schedule'] = $this->teacher_model->teacher_next_schedule($data['user_account']['ID']);
+				$data['PP'] = $this->teacher_model->get_profile_picture($data['user_account']['ID']);
 			}
 			//$page -> path view file
 			$page =  $data['user_account']['user_type'] . "/home";

@@ -104,4 +104,12 @@ class Teacher_model extends CI_Model
         $result = $this->db->query($query);
         return $result->result_array();      
     }
+
+    public function get_profile_picture($id)
+    {
+        $this->db->select('ProfilePicture');
+        $this->db->from('MsTeacher');
+        $this->db->where('id', $id);
+        return $this->db->get()->row_array();
+    }
 }

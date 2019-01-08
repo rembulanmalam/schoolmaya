@@ -58,7 +58,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-auto">
-					<img class="rounded-circle" src="<?php echo (base_url($user_account['ProfilePicture'])) ?>"></div>
+					<img id="pp-img" class="rounded-circle pp-img" src="<?php echo (base_url($PP['ProfilePicture'])) ?>"></div>
                 <div class="col">
 					<h3>Welcome back!</h3>
 					<h1><?php echo $user_account['Name'] ?></h1>

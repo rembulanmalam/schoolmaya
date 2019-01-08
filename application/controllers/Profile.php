@@ -20,8 +20,8 @@ class Profile extends CI_Controller
     public function update()
     {
         $this->user_account = $this->session->userdata();
-        //encrypt new password
 
+        //encrypt new password
         $confirm_new_password = $this->input->post('RNPassword');
         $new_password = $this->input->post('NPassword');
         
@@ -60,4 +60,28 @@ class Profile extends CI_Controller
             }
         }
     }
+
+    public function change_profile_picture(){
+
+        $data = $this->session->userdata();
+
+        $img_string = $this->input->post('img_upload');
+        
+        $img_string = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $img_string));
+
+        $path = "asset/img/" . $data['ID'] . "_" . $data['user_type'] . ".png";
+        file_put_contents( $path, $img_string);
+        
+        if($data['user_type'] == 'student'){
+            $flag = $this->user_model->change_profile_picture('Student', $data['ID'], $path);
+        }
+        if($data['user_type'] == 'teacher')
+        {
+            $flag = $this->user_model->change_profile_picture('Teacher', $data['ID'], $path);
+        }
+       
+        
+        echo json_encode($flag);
+    }
+
 }

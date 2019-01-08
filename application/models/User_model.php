@@ -10,7 +10,7 @@ class User_model extends CI_Model
         $default_password = 123456;
         
         $array = array('Username' => $username);
-        $this->db->select("*");
+        $this->db->select("ID, Name, Gender, Password");
         $this->db->from("MsStudent");
         $this->db->where($array);
         $query = $this->db->get();
@@ -34,7 +34,7 @@ class User_model extends CI_Model
         
         else
         {
-            $this->db->select("*");
+            $this->db->select("ID, Name, Gender, Password");
             $this->db->from("MsTeacher");
             $this->db->where($array);
             $query = $this->db->get();
@@ -68,4 +68,14 @@ class User_model extends CI_Model
         $this->db->update('MsTeacher', $data);
         return $this->db->affected_rows();
     }
+
+    public function change_profile_picture($table, $id, $path)
+    {
+        $this->db->set('ProfilePicture', $path);
+        $this->db->where('id', $id);
+        $this->db->update('Ms' . $table);
+        return $this->db->affected_rows();
+    }
+
+    
 }
