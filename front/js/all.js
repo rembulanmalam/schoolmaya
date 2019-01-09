@@ -9,6 +9,10 @@ $(function () {
 
             success: function(response){
                 user_type = response;
+            },
+
+            error: function(){
+                user_type = 'student';
             }
         })
     });
@@ -17,6 +21,7 @@ $(function () {
         var $nav = $("#nav");
         var addClass = user_type + ' scrolled';
         console.log(addClass);
+        console.log($nav);
         $nav.toggleClass( addClass, $(this).scrollTop() > $nav.height());
     });
 });

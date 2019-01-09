@@ -25,7 +25,7 @@
 					<a class="nav-link" href="<?php echo (base_url()) ?>">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo (base_url('index.php/about-us/')) ?>">About Us</a>
+					<a class="nav-link" href="<?php echo (base_url('index.php/about_us/')) ?>">About Us</a>
 				</li>
 			</ul>
 		</div>
@@ -35,7 +35,7 @@
 <title>SekolahQu | Login</title>
 </head>
 <body class="body-login">
-<div class="container">
+<div class="container justify-content-center align-items-center align-self-center">
 	<div class="row" id="login-row">
 		<div class="col-xl-4 bg-white" style="padding:5%;">
 			<h1 class="gilroy-light">Login</h1>			
@@ -64,10 +64,11 @@
 			</div>
 		</div>
         <div class="col" style="padding-left:0px;">
-            <div class="carousel slide" data-ride="carousel" id="carousel-1">
+            <div class="carousel slide" data-ride="carousel" id="carousel-1" width=100%>
                         <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active"><img class="w-100 d-block" src="https://image.freepik.com/free-photo/smiling-students-with-backpacks_1098-1220.jpg" alt="Slide Image" style="object-fit: cover;"></div>
-                            <div class="carousel-item"><img class="w-100 d-block" src="http://www.npcc.us/wp-content/uploads/2013/02/1030-School-Image-of-smart-schoolboy-looking-at-camera-with-smile-on-background-of-classmates.jpg" alt="Slide Image" style="object-fit: cover;"></div>
+                            <div class="carousel-item active"><img class="w-100 d-block" src="
+							<?php echo base_url('asset/img/banner-1.png') ?>" alt="Slide Image" style="object-fit: cover;"></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="<?php echo base_url('asset/img/banner-2.png') ?>" alt="Slide Image" style="object-fit: cover;"></div>
                         </div>
                         <div>
 							<a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
